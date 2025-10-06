@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezioni di Vue.js</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .text-danger { color: red; }
+        .active { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <div v-if="isLoggedIn">
+            <h2>Benvenuto, login effettuato correttamente</h2>
+    </div>
+        <div v-else>
+            <h2>Per favore, effettuare il login</h2>
+    </div>
+
+       <h2>Semaforo: {{ coloreSemaforo }}</h2> 
+    
+    <div v-if="coloreSemaforo === 'rosso'">
+        <h1>🔴 Stop</h1>
+    </div>
+
+    <div v-else-if="coloreSemaforo === 'giallo'">
+        <h1>🟠 Attenzione</h1>
+    </div>
+
+    <div v-else-if="coloreSemaforo === 'verde'">
+        <h1>🟢 Vai!</h1>
+    </div>
+
+    <div>
+        <h2>Classifica Team Preferiti</h2>
+        <ol>
+            <li v-for="(team, index) in teamPreferiti" :key="index">
+                {{ team }}
+            </li>
+        </ol>
+    </div>
+
+    <div>
+        <h2>Catalogo Prodotti</h2>
+        
+        <table border="2" style="width: 60%; text-align: left; border-collapse: collapse;">
+            <tr>
+                <th>ID</th>
+                <th>Nome Prodotto</th>
+                <th>Prezzo</th>
+            </tr>
+                <tr v-for="prodotto in catalogoProdotti" :key="prodotto.id">
+                    <td>{{ prodotto.id }}</td>
+                    <td>{{ prodotto.nome }}</td>
+                    <td>{{ prodotto.prezzo.toFixed(2) }} €</td>
+            </tr>
+            
+        </table>
+    </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

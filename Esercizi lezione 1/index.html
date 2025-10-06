@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1 VueJS</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .text-danger { color: red; }
+        .active { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+    <h1>Esercizi lezione 1</h1>
+    <div id="app_profilo">
+        <h2>Profilo Utente</h2>
+            <p>Nome: {{ nome }}</p>
+            <p>Cognome: {{ cognome }}</p>
+            <p>Città: {{ città }}</p>
+    </div>
+
+    <div id="app_prodotto">
+        <h2>Dettagli prodotto</h2>
+            <p>Il {{ prodotto }} costa {{ prezzo }}€</p>
+    </div>
+
+    <div id="app_immagine">
+        <h2>Immagine disattivata</h2>
+        <button :disabled="immagineDisabilitata"> Immagine Disabilitata</button>
+
+    </div>
+
+    <div id="app_tooltip">
+        <h2>Tooltip Dinamico</h2>
+        <p :title="messaggioTooltip">Istituto JC Maxwell</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
