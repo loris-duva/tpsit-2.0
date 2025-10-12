@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling</title>
+</head>
+<body>
+
+    <h1>Esercizio calcoli Scheduling</h1>
+
+    <h2>Valori da calcolare</h2>
+    <table border="1">
+        <tr>
+            <th>Processo</th>
+            <th>Tempo di Arrivo (ms)</th>
+            <th>Tempo di Esecuzione (ms)</th>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>0</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>8</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>P3</td>
+            <td>3</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td>P4</td>
+            <td>10</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>P5</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>Risultati calcolati per algoritmo</h2>
+    <table border="1">
+        <tr>
+            <th>Algoritmo</th>
+            <th>Tempo Medio di Attesa (ms)</th>
+            <th>Tempo Medio di Turnaround (ms)</th>
+        </tr>
+        <tr>
+            <td>FCFS</td>
+            <td>21.8</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>SSJF (SJF Non-preemptive)</td>
+            <td>17.4</td>
+            <td>27.6</td>
+        </tr>
+        <tr>
+            <td>SJF con Preemption (SRTF)</td>
+            <td>12.8</td>
+            <td>23</td>
+        </tr>
+    </table>
+
+
+    <h2>Calcoli FCFS</h2>
+    <table border="1">
+        <tr>
+            <th>Processo</th>
+            <th>t Arrivo</th>
+            <th>t Esecuzione</th>
+            <th>t Completamento</th>
+            <th>t Turnaround</th>
+            <th>t Attesa</th>
+        </tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>20</td><td>20</td><td>0</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>32</td><td>29</td><td>17</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>40</td><td>33</td><td>25</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>45</td><td>37</td><td>32</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>51</td><td>41</td><td>35</td></tr>
+    </table>
+
+    <h2>Calcoli SSJF</h2>
+    <table border="1">
+        <tr>
+            <th>Processo</th>
+            <th>t Arrivo</th>
+            <th>t Esecuzione</th>
+            <th>t Completamento</th>
+            <th>t Turnaround</th>
+            <th>t Attesa</th>
+        </tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>20</td><td>20</td><td>0</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>25</td><td>17</td><td>12</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>31</td><td>21</td><td>15</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>39</td><td>32</td><td>24</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>51</td><td>48</td><td>36</td></tr>
+    </table>
+
+    <h2>Calcoli SJF Preemptive </h2>
+    <table border="1">
+        <tr>
+            <th>Processo</th>
+            <th>t Arrivo</th>
+            <th>t Esecuzione</th>
+            <th>t Completamento</th>
+            <th>t Turnaround</th>
+            <th>t Attesa</th>
+        </tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>51</td><td>51</td><td>31</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>13</td><td>5</td><td>0</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>26</td><td>23</td><td>11</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>19</td><td>9</td><td>3</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>34</td><td>27</td><td>19</td></tr>
+    </table>
+
+</body>
+</html>
