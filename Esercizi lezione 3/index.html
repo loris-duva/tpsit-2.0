@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 3</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .text-danger { color: red; }
+        .active { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+       <h2>1) Cambiare il messaggio:</h2>
+       <p>{{ messaggio }}</p>
+       <button @click="cambiaMessaggio">Pulsante</button>
+
+       <h2>2) Accendere/Spegnere la luce:</h2>
+       <p v-if="stato_luce">La luce è accesa</p>
+       <p v-else>La luce è spenta</p>
+       
+       <button v-if="stato_luce" @click="accendiLuce">Spegni</button>
+       <button v-else @click="accendiLuce">Accendi</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
