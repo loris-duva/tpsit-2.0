@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Scheduling CPU - Risultati con Grafica</title>
+</head>
+<body>
+
+    <h1>Simulatore di Scheduling CPU con Grafica (aiutandosi con l'AI)</h1>
+
+    <p>Simulazione dell'esercizio di scheduling per i 5 processi dati. I risultati e i diagrammi di Gantt (realizzati con tabelle HTML) sono riportati di seguito.</p>
+
+    <hr>
+
+    <h2>1. Dati di Input</h2>
+    <table border="1">
+        <tr>
+            <th>Processo</th>
+            <th>Tempo di Arrivo (ms)</th>
+            <th>Tempo di Esecuzione (ms)</th>
+        </tr>
+        <tr><td>P1</td><td>0</td><td>20</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td></tr>
+    </table>
+
+    <hr>
+
+    <h2>2. Risultati Medi per Algoritmo</h2>
+    <table border="1">
+        <tr>
+            <th>Algoritmo</th>
+            <th>Tempo Medio di Attesa ($\text{t}_{\text{attesa, media}}$)</th>
+            <th>Tempo Medio di Turnaround ($\text{t}_{\text{tr, media}}$)</th>
+        </tr>
+        <tr>
+            <td>FCFS</td>
+            <td><strong>21.8 ms</strong></td>
+            <td><strong>32.0 ms</strong></td>
+        </tr>
+        <tr>
+            <td>SSJF (SJF Non-preemptive)</td>
+            <td><strong>17.4 ms</strong></td>
+            <td><strong>27.6 ms</strong></td>
+        </tr>
+        <tr>
+            <td>SJF Preemptive (SRTF)</td>
+            <td><strong>12.8 ms</strong></td>
+            <td><strong>23.0 ms</strong></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h2>3. Diagrammi di Gantt e Dettagli</h2>
+
+    <p>Legenda Colori: <span style="background-color: #ADD8E6; padding: 2px;">P1</span>, <span style="background-color: #90EE90; padding: 2px;">P2</span>, <span style="background-color: #FFB6C1; padding: 2px;">P3</span>, <span style="background-color: #FFA07A; padding: 2px;">P4</span>, <span style="background-color: #E0FFFF; padding: 2px;">P5</span></p>
+    
+    <h3>FCFS (First-Come, First-Served)</h3>
+    <p>Ordine: P1 (0) &rarr; P3 (20) &rarr; P5 (32) &rarr; P2 (40) &rarr; P4 (45)</p>
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; table-layout: fixed; text-align: center;">
+        <tr>
+            <td bgcolor="#ADD8E6" width="39.2%">P1</td>
+            <td bgcolor="#FFB6C1" width="23.5%">P3</td>
+            <td bgcolor="#E0FFFF" width="15.7%">P5</td>
+            <td bgcolor="#90EE90" width="9.8%">P2</td>
+            <td bgcolor="#FFA07A" width="11.8%">P4</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                0 &mdash; 20 &mdash; 32 &mdash; 40 &mdash; 45 &mdash; 51
+            </td>
+        </tr>
+    </table>
+    
+    <details><summary>Dettagli Calcolo FCFS</summary>
+    <table border="1">
+        <tr><th>Processo</th><th>t Arr</th><th>t Esec</th><th>t Compl</th><th>t TR</th><th>t Attesa</th></tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>20</td><td>20</td><td>0</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>32</td><td>29</td><td>17</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>40</td><td>33</td><td>25</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>45</td><td>37</td><td>32</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>51</td><td>41</td><td>35</td></tr>
+    </table>
+    </details>
+
+    <br>
+
+    <h3>SSJF (Shortest Job First Non-Preemptive)</h3>
+    <p>Ordine: P1 (0) &rarr; P2 (20) &rarr; P4 (25) &rarr; P5 (31) &rarr; P3 (39)</p>
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; table-layout: fixed; text-align: center;">
+        <tr>
+            <td bgcolor="#ADD8E6" width="39.2%">P1</td>
+            <td bgcolor="#90EE90" width="9.8%">P2</td>
+            <td bgcolor="#FFA07A" width="11.8%">P4</td>
+            <td bgcolor="#E0FFFF" width="15.7%">P5</td>
+            <td bgcolor="#FFB6C1" width="23.5%">P3</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                0 &mdash; 20 &mdash; 25 &mdash; 31 &mdash; 39 &mdash; 51
+            </td>
+        </tr>
+    </table>
+
+    <details><summary>Dettagli Calcolo SSJF</summary>
+    <table border="1">
+        <tr><th>Processo</th><th>t Arr</th><th>t Esec</th><th>t Compl</th><th>t TR</th><th>t Attesa</th></tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>20</td><td>20</td><td>0</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>25</td><td>17</td><td>12</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>31</td><td>21</td><td>15</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>39</td><td>32</td><td>24</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>51</td><td>48</td><td>36</td></tr>
+    </table>
+    </details>
+
+    <br>
+
+    <h3>SJF Preemptive / SRTF (Shortest Remaining Time First)</h3>
+    <p>Sequenza: P1(0-3) &rarr; P3(3-7) &rarr; P2(7-13) &rarr; P4(13-19) &rarr; P3(19-26) &rarr; P5(26-34) &rarr; P1(34-51)</p>
+    <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; table-layout: fixed; text-align: center;">
+        <tr>
+            <td bgcolor="#ADD8E6" width="5.9%">P1</td>
+            <td bgcolor="#FFB6C1" width="7.8%">P3</td>
+            <td bgcolor="#90EE90" width="11.8%">P2</td>
+            <td bgcolor="#FFA07A" width="11.8%">P4</td>
+            <td bgcolor="#FFB6C1" width="13.7%">P3</td>
+            <td bgcolor="#E0FFFF" width="15.7%">P5</td>
+            <td bgcolor="#ADD8E6" width="33.3%">P1</td>
+        </tr>
+        <tr>
+            <td colspan="7" style="white-space: nowrap;">
+                0 &mdash; 3 &mdash; 7 &mdash; 13 &mdash; 19 &mdash; 26 &mdash; 34 &mdash; 51
+            </td>
+        </tr>
+    </table>
+    <small>Nota: P2 esegue per 2ms (7-8ms) e viene preemptato da P4 (che arriva a 10ms), ma il tempo rimanente di P2 (3ms) è ancora il più corto e continua.</small>
+
+    <details><summary>Dettagli Calcolo SRTF</summary>
+    <table border="1">
+        <tr><th>Processo</th><th>t Arr</th><th>t Esec</th><th>t Compl</th><th>t TR</th><th>t Attesa</th></tr>
+        <tr><td>P1</td><td>0</td><td>20</td><td>51</td><td>51</td><td>31</td></tr>
+        <tr><td>P2</td><td>8</td><td>5</td><td>13</td><td>5</td><td>0</td></tr>
+        <tr><td>P3</td><td>3</td><td>12</td><td>26</td><td>23</td><td>11</td></tr>
+        <tr><td>P4</td><td>10</td><td>6</td><td>19</td><td>9</td><td>3</td></tr>
+        <tr><td>P5</td><td>7</td><td>8</td><td>34</td><td>27</td><td>19</td></tr>
+    </table>
+    </details>
+
+</body>
+</html>
