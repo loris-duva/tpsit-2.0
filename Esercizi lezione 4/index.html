@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 4</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .text-danger { color: red; }
+        .active { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+
+    <div id="app"> 
+        <h2>1) Controllo Maggiore Età</h2>
+        <label for="input-eta">Inserisci la tua età: </label>
+        <input id="input-eta" type="number" v-model.number="eta" min="0">
+        <p>Stato: <strong>{{ messaggioEta }}</strong></p>
+
+        <h2>2) Carrello Semplice</h2>
+        <ul>
+            <li v-for="(prodotto, index) in carrello" :key="index">
+                {{ prodotto.nome }} - {{ prodotto.prezzo.toFixed(2) }} &euro;
+            </li>
+        </ul>
+        <p>Totale Carrello: 
+            <strong>{{ totaleCarrello.toFixed(2) }} &euro;</strong>
+        </p>
+        <button @click="aggiungiProdotto">Aggiungi Articolo Casuale</button>
+
+        <h2>3) Validazione Username</h2>
+        <label for="input-username">Username (min. 5 caratteri): </label>
+        <input id="input-username" type="text" v-model="username" >
+        <p v-if="erroreUsername" style="color: red; font-weight: bold;">
+            L'username deve contenere almeno 5 caratteri.
+        </p>
+        <p v-else-if="username.length >= 5" style="color: green;">
+            Username valido!
+        </p>
+
+        <h2>4) Salvataggio Automatico</h2>
+        <label for="textarea-content">Scrivi qualcosa qui: </label>
+        <textarea id="textarea-content" v-model="contenutoTesto" ></textarea>
+        
+        <p>Stato: <strong>{{ statoSalvataggio }}</strong></p>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
