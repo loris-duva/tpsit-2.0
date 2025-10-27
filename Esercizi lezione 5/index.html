@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Esercizio 5</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .message-box {
+            padding: 15px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            transition: background-color 0.3s;
+            color: white;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #4CAF50;
+        }
+        .error {
+            background-color: #f44336;
+        }
+
+        .avatar {
+            margin-top: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <h2>1) Stato del Messaggio</h2>
+            <p>Il messaggio è attualmente in stato: <strong>{{ statusText }}</strong></p>
+            <div :class="['message-box', messageState]" v-if="messageState">
+                {{ messageText }}
+            </div>
+            <button @click="setMessage('success')">Imposta come Successo</button>
+            <button @click="setMessage('error')">Imposta come Errore</button>
+        
+        <hr>
+
+        <h2>2) Avatar Personalizzabile</h2>
+            <div>
+                <label>Larghezza (px):</label>
+                <input type="range" v-model.number="avatarConfig.width" min="10" max="300">
+            </div>
+            <div>
+                <label>Altezza (px):</label>
+                <input type="range" v-model.number="avatarConfig.height" min="10" max="300">
+            </div>
+            <div>
+                <label>Colore:</label>
+                <input type="color" v-model="avatarConfig.backgroundColor">
+            </div>
+
+            <div class="avatar" :style="avatarStyle">
+            </div>
+        
+        <hr>
+
+        <h2>3) Saluto Personale</h2>
+            <saluto-utente></saluto-utente>
+            <saluto-utente></saluto-utente>
+        
+        <hr>
+
+        <h2>4) Card Semplice</h2>
+            <info-card></info-card>
+
+        <script src="https://unpkg.com/vue@3"></script>
+        <script src="./app.js"></script>
+    </div>
