@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📚 Valutatore di libri o film</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Collegamento al file CSS -->
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- Contenitore principale dell'app Vue, dove verrà montata -->
+
+    <h1>📚 Valutatore di libri o film</h1>
+    <!-- Titolo principale dell'applicazione -->
+
+    <div class="form">
+      <!-- Sezione del form per inserire un nuovo elemento -->
+
+      <input v-model="titolo" placeholder="Titolo" />
+      <!-- Input di testo legato tramite v-model alla variabile 'titolo' -->
+
+      <select v-model="genere">
+        <!-- Menu a tendina per scegliere il genere, collegato alla variabile 'genere' -->
+        <option disabled value="">Seleziona un genere</option>
+        <!-- Opzione disabilitata come placeholder -->
+        <option>Fantasy</option>
+        <option>Avventura</option>
+        <option>Horror</option>
+        <option>Giallo</option>
+        <option>Storia d'amore</option>
+        <!-- Lista dei generi disponibili -->
+      </select>
+
+      <star-rating @imposta-valutazione="voto = $event"></star-rating>
+      <!-- Componente delle stelle: quando emette l'evento, aggiorna 'voto' -->
+
+      <button @click="aggiungiElemento">Aggiungi</button>
+      <!-- Pulsante per aggiungere il nuovo elemento alla lista -->
+    </div>
+
+    <ul>
+      <!-- Lista degli elementi aggiunti -->
+
+      <li v-for="(j, i) in elementi" :key="i">
+        <!-- Ciclo: crea un <li> per ogni elemento presente nell'array 'elementi' -->
+
+        <div>
+          <strong>{{ j.titolo }}</strong>
+          <!-- Mostra il titolo del libro/film -->
+          <div class="genere">{{ j.genere }}</div>
+          <!-- Mostra il genere -->
+        </div>
+
+        <span class="voto">⭐ {{ j.voto }}/5</span>
+        <!-- Mostra il voto assegnato -->
+      </li>
+    </ul>
+
+    <div v-if="elementi.length" class="stats">
+      <!-- Se esiste almeno un elemento, mostra le statistiche -->
+
+      <p>Media voti: <strong>{{ mediaVoti.toFixed(1) }}</strong></p>
+      <!-- Mostra la media dei voti con una sola cifra decimale -->
+
+      <p>Numero elementi: {{ elementi.length }}</p>
+      <!-- Mostra il numero totale degli elementi registrati -->
+    </div>
+
+    <!-- 🪟 Modale -->
+    <div v-if="showModal" class="overlay" @click.self="chiudiModale">
+      <!-- Overlay che appare quando 'showModal' è true -->
+      <!-- @click.self significa che si chiude solo cliccando sullo sfondo -->
+
+      <div class="modal">
+        <!-- Contenitore della finestra modale -->
+        <h2>✅ Libro aggiunto!</h2>
+        <!-- Messaggio di conferma -->
+
+        <p><strong>{{ ultimoTitolo }}</strong> è stato aggiunto con successo.</p>
+        <!-- Mostra il titolo dell'ultimo elemento aggiunto -->
+
+        <button @click="chiudiModale">Chiudi</button>
+        <!-- Bottone per chiudere la modale -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Importazione della libreria Vue.js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <!-- Collegamento al file della logica dell'app -->
+  <script src="app.js"></script>
+</body>
+</html>
